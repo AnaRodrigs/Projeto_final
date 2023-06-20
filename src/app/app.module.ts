@@ -9,6 +9,8 @@ import { StudentComponent } from './student/student.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TeacherFormComponent } from './teacher-form/teacher-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     TeacherComponent,
     StudentComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    TeacherFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
