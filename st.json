@@ -1,0 +1,14 @@
+{
+  "Student": [
+    
+  ],
+  
+  "Teacher": [
+    {
+    "id": 1,
+    "name": "Paula",
+    "phone": 11111111,
+    "subject": "historia"
+    }
+  ]
+}
