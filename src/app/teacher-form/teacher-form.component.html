@@ -1,1 +1,41 @@
-<p>teacher-form works!</p>
+<div class="container text-center  ">
+    <div class="container" >
+        <div class="container">
+            <form [formGroup]="formGroupClient">
+                <div class="mb-2">
+                    <div class="display-6">
+                        Cadastro de Professores
+                    </div>
+                </div>
+                
+              
+                <div  class="input-group mb-3"  >
+                    <span class="input-group-text" id="name">Nome</span>
+                    <input type="text" id="name" formControlName="name" class="form-control">
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="email">Email </span>
+                    <input type="email" id="email" formControlName="email" class="form-control">
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="subject">Curso </span>
+                    <input type="text" id="subject" formControlName="subject" class="form-control"
+                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="phone">Telefone </span>
+                    <input type="phone" id="phone" formControlName="phone" class="form-control"
+                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>
+
+
+                <div class="mb-2  p-4 text-center " >
+                    <button class="btn btn-primary me-2 " style="width: 25%;"  (click)="save ()"> Salvar</button>
+                    <button class="btn btn-secondary"  style="width: 25%;" (click)="clean() ">Limpar</button>
+
+                </div>
+    

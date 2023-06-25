@@ -1,8 +1,8 @@
-<!--<app-teacher-form [teacher]="teacher" (saveEvent)="onSaveEvent($event)" (CleanEvent)="onCleanEvent()"></app-teacher-form>
--->
+<app-teacher-form [teacher]="teacher" (saveEvent)="onSaveEvent($event)" (CleanEvent)="onCleanEvent()"></app-teacher-form>
+
 
 <div class=" container text-center">
-  <!-- <table class="table success">
+ <table class="table success">
       <thead class="table-primary">
         <tr>
           <th scope="col">#</th>
@@ -17,14 +17,14 @@
         <tr *ngFor="let teacher of teachers">
           <th scope="row">{{teacher.id}}</th>
           <td>{{teacher.name}}</td>
-          <td>{teacher.subject}</td>
+          <td>{{teacher.subject}}</td>
           <td>{{teacher.phone}}</td>
   
           <td>
-            <button class="btn btn-secondary  me-1 " (click)="edit(student)">Editar</button>
-            <button class="btn btn-danger  text-light" (click)="delete(student)">Excluir</button>
+            <button class="btn btn-secondary  me-1 " (click)="edit(teacher)">Editar</button>
+            <button class="btn btn-danger  text-light" (click)="delete(teacher)">Excluir</button>
           </td>
         </tr>
       </tbody>
-    </table>-->
-</div>
+    </table>
+  </div>
