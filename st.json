@@ -1,14 +1,45 @@
 {
   "Student": [
-    
+    {
+      "id": 1,
+      "name": "Ana Maria Rodrigues",
+      "email": "rodriguesanalima13@gmail.com",
+      "address": "BR-SP, casa",
+      "phone": "11999167334"
+    },
+    {
+      "id": 2,
+      "name": "maria",
+      "email": "maria@gmail.com",
+      "address": "BR-SP, casa",
+      "phone": "1111111111"
+    },
+    {
+      "id": 3,
+      "name": "josefa",
+      "email": "josefa@gmail.com",
+      "address": "aeroporto",
+      "phone": "2222222222"
+    }
   ],
-  
   "Teacher": [
     {
-    "id": 1,
-    "name": "Paula",
-    "phone": 11111111,
-    "subject": "historia"
+      "id": 1,
+      "name": "Paula",
+      "phone": 11111111,
+      "subject": "historia"
+    },
+    {
+      "id": 2,
+      "name": "Ana Maria Rodrigues",
+      "phone": "11999167334",
+      "subject": "ads"
+    },
+    {
+      "id": 3,
+      "name": "Ivan",
+      "phone": "1111111111111111",
+      "subject": "geografia"
     }
   ]
 }
