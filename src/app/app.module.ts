@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TeacherFormComponent } from './teacher-form/teacher-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StudentFormComponent } from './student-form/student-form.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     StudentComponent,
     HomeComponent,
     HeaderComponent,
-    TeacherFormComponent
+    TeacherFormComponent,
+    StudentFormComponent
   ],
   imports: [
     BrowserModule,

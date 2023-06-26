@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Student } from '../student';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StudentService } from '../student.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student',
@@ -12,22 +13,17 @@ export class StudentComponent {
  students : Student[] = [];
  
   isEditing: boolean = false;
-  formGroupClient: FormGroup;
+ 
   submitted: boolean = false;
 
-  constructor(private studentService: StudentService,
-    private formBuilder: FormBuilder) {
-    this.formGroupClient = formBuilder.group({
-      id: [''],
-      name:  ['',[Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
-      email: ['',[Validators.required, Validators.email]],
-      address: [''],
-      phone: ['',[Validators.required]],
-    });
+  constructor (private studentService: StudentService, private router : Router){
+
   }
+
   ngOnInit(): void {
     this.loadStudents();
    }
+
    loadStudents() {
      this.studentService.getStudents (). subscribe(
        {
@@ -35,44 +31,13 @@ export class StudentComponent {
        }
      );
    }
- 
- 
-   save (){
-  this.submitted = true;
-   if (this.formGroupClient.valid)
-   {
-    if (this.isEditing)
-    {
-      this.studentService.update(this.formGroupClient.value).subscribe(
-        {
-          next: () => {
-            this.loadStudents();
-            this.formGroupClient.reset();
-            this.isEditing = false;
-            this.submitted = false;
-           
-          }
-        }
-      )
-    }
-    else{
-    this.studentService.save(this.formGroupClient.value).subscribe(
-      {
-        next : data => {
-          this.students.push(data)
-          this.formGroupClient.reset();
 
-        }
-      }
-    );
-  }
-}
-
+   create(){
+    this.router.navigate(['creatStudent'])
    }
    
    edit (student : Student){
-      this.formGroupClient.setValue(student);
-      this.isEditing = true;
+    this.router.navigate(['studentDetails', student.id])
  
    }
  
@@ -80,21 +45,6 @@ export class StudentComponent {
      this.studentService.delete(student).subscribe({
        next : () => this.loadStudents()
      })
- 
- }
-   clean (){
-   this.formGroupClient.reset();
-   this.isEditing = false;
-   this.submitted= false;
-   }
-   get name(): any{
-    return this.formGroupClient.get("name");
-  }
-  get email(): any{
-    return this.formGroupClient.get("email");
-  }
-  get phone(): any{
-    return this.formGroupClient.get("phone");
   }
  }
  
