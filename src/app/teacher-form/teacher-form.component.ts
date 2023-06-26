@@ -28,6 +28,7 @@ export class TeacherFormComponent {
       private formBuilder: FormBuilder) {
       this.formGroupClient = formBuilder.group({
         id: [''],
+        email: [''],
         name: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
         phone: ['',[Validators.required]],
         subject :['',[Validators.required]],
