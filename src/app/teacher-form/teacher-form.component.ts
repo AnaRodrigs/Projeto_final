@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { Teacher } from '../teacher';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TeacherService } from '../teacher.service';
 
 @Component({
@@ -28,9 +28,9 @@ export class TeacherFormComponent {
       private formBuilder: FormBuilder) {
       this.formGroupClient = formBuilder.group({
         id: [''],
-        name: [''],
-        phone: [''],
-        subject :[''],
+        name: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
+        phone: ['',[Validators.required]],
+        subject :['',[Validators.required]],
       });
     } 
   
@@ -51,5 +51,14 @@ export class TeacherFormComponent {
       this.submitted = false;
     }
 
+    get name(): any{
+      return this.formGroupClient.get("name");
+    }
+    get subject(): any{
+      return this.formGroupClient.get("subject");
+    }
+    get phone(): any{
+      return this.formGroupClient.get("phone");
+    }
   
   }

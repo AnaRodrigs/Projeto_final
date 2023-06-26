@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Student } from '../student';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StudentService } from '../student.service';
 
 @Component({
@@ -11,18 +11,18 @@ import { StudentService } from '../student.service';
 export class StudentComponent {
  students : Student[] = [];
  
-isEditing: boolean = false;
+  isEditing: boolean = false;
   formGroupClient: FormGroup;
-  isChecked: boolean = false; 
+  submitted: boolean = false;
 
   constructor(private studentService: StudentService,
     private formBuilder: FormBuilder) {
     this.formGroupClient = formBuilder.group({
       id: [''],
-      name: [''],
-      email: [''],
+      name:  ['',[Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
+      email: ['',[Validators.required, Validators.email]],
       address: [''],
-      phone: [''],
+      phone: ['',[Validators.required]],
     });
   }
   ngOnInit(): void {
@@ -38,7 +38,7 @@ isEditing: boolean = false;
  
  
    save (){
-   this.isChecked = true;
+  this.submitted = true;
    if (this.formGroupClient.valid)
    {
     if (this.isEditing)
@@ -49,7 +49,8 @@ isEditing: boolean = false;
             this.loadStudents();
             this.formGroupClient.reset();
             this.isEditing = false;
-            this.isChecked = false;
+            this.submitted = false;
+           
           }
         }
       )
@@ -60,7 +61,6 @@ isEditing: boolean = false;
         next : data => {
           this.students.push(data)
           this.formGroupClient.reset();
-          this.isChecked = false;
 
         }
       }
@@ -85,8 +85,17 @@ isEditing: boolean = false;
    clean (){
    this.formGroupClient.reset();
    this.isEditing = false;
+   this.submitted= false;
    }
-   
+   get name(): any{
+    return this.formGroupClient.get("name");
+  }
+  get email(): any{
+    return this.formGroupClient.get("email");
+  }
+  get phone(): any{
+    return this.formGroupClient.get("phone");
+  }
  }
  
   
